@@ -8,7 +8,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 
-	"github.com/gofiber/template/html"
+	"github.com/gofiber/template/html/v2"
 )
 
 func indexHandler(c *fiber.Ctx, db *sql.DB) error {
@@ -74,5 +74,6 @@ func main() {
 	if port == "" {
 		port = "3000"
 	}
+	app.Static("/", "./public")
 	log.Fatalln(app.Listen(fmt.Sprintf(":%v", port)))
 }
