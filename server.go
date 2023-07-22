@@ -15,7 +15,7 @@ import (
 
 func indexHandler(c *fiber.Ctx, db *sql.DB) error {
 	var res string
-	var heyheyrusnigga []string
+	var todos []string
 	rows, err := db.Query("SELECT * FROM heyheyrunigga")
 	defer rows.Close()
 	if err != nil {
@@ -24,10 +24,10 @@ func indexHandler(c *fiber.Ctx, db *sql.DB) error {
 	}
 	for rows.Next() {
 		rows.Scan(&res)
-		heyheyrusnigga = append(heyheyrusnigga, res)
+		todos = append(todos, res)
 	}
 	return c.Render("index", fiber.Map{
-		"heyheyrusnigga": heyheyrusnigga,
+		"todos": todos,
 	})
 }
 
@@ -44,7 +44,7 @@ func deleteHandler(c *fiber.Ctx, db *sql.DB) error {
 }
 
 func main() {
-	connStr := "postgresql://<postgres>:<1313>@<localhost>/heyheyrusnigga?sslmode=disable"
+	connStr := "postgresql://<postgres>:<1313>@<localhost:3000>/todos?sslmode=disable"
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
