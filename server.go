@@ -16,7 +16,7 @@ import (
 func indexHandler(c *fiber.Ctx, db *sql.DB) error {
 	var res string
 	var todos []string
-	rows, err := db.Query("SELECT * FROM heyheyrunigga")
+	rows, err := db.Query("SELECT * FROM todos")
 	defer rows.Close()
 	if err != nil {
 		log.Fatalln(err)
