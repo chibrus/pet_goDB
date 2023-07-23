@@ -1,4 +1,4 @@
-/*github.com/cosmtrek/air*/
+/*"github.com/cosmtrek/air"*/
 package main
 
 import (
