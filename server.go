@@ -1,3 +1,4 @@
+/*github.com/cosmtrek/air*/
 package main
 
 import (
@@ -6,12 +7,12 @@ import (
 	"log"
 	"os"
 
+	_ "github.com/lib/pq"
+
 	"github.com/gofiber/fiber/v2"
 
 	"github.com/gofiber/template/html/v2"
-
-	_ "github.com/lib/pq"
-	/*github.com/cosmtrek/air*/)
+)
 
 func indexHandler(c *fiber.Ctx, db *sql.DB) error {
 	var res string
@@ -27,7 +28,7 @@ func indexHandler(c *fiber.Ctx, db *sql.DB) error {
 		todos = append(todos, res)
 	}
 	return c.Render("index", fiber.Map{
-		"todos": todos,
+		"Todos": todos,
 	})
 }
 
@@ -67,12 +68,10 @@ func deleteHandler(c *fiber.Ctx, db *sql.DB) error {
 
 func main() {
 	connStr := "user=postgres password=1313 dbname=todos sslmode=disable"
-
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	engine := html.New("./views", ".html")
 	app := fiber.New(fiber.Config{
 		Views: engine,
