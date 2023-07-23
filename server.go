@@ -96,7 +96,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "5555"
+		port = "3000"
 	}
 	app.Static("/", "./public")
 	log.Fatalln(app.Listen(fmt.Sprintf(":%v", port)))
