@@ -66,7 +66,7 @@ func deleteHandler(c *fiber.Ctx, db *sql.DB) error {
 }
 
 func main() {
-	connStr := "postgresql://<postgres>:<1313>@<localhost>/todos?sslmode=disable"
+	connStr := "postgresql://<postgres>:<1313>@<127.0.0.1:5432>/todos?sslmode=disable"
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
